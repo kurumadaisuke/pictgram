@@ -18,6 +18,7 @@ class TopicsController < ApplicationController
     end
   end
 
+
   private
   def topic_params
     params.require(:topic).permit(:image, :description)
