@@ -10,6 +10,7 @@
           <div class="form-group">
             <%= f.label :content %>
             <%= f.text_area :content, class: 'form-control' %>
+            <%= f.hidden_field :topic_id, :value => @comment.topic_id %>
           </div>
           
           <% if logged_in? %>
