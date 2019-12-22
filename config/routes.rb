@@ -20,6 +20,4 @@ Rails.application.routes.draw do
   
   # コメント実装
   resources :comments
-  
-  get 'comments/new'
 end
