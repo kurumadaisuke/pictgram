@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.all.includes(:favorite_users)
+    # 投稿順入れ替え
+    @topics = Topic.all.order(created_at: :desc)
   end
   
   def new
@@ -17,7 +19,6 @@ class TopicsController < ApplicationController
       render :new
     end
   end
-
 
   private
   def topic_params

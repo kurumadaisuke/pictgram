@@ -12,4 +12,9 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :topics
+  has_many :favorites
+  has_many :favorite_topics, through: :favorites, source: 'topic'
+  # コメント実装ユーザーに関連
+  has_many :comments
+  has_many :comment_topics, through: :comments, source: 'topic'
 end
