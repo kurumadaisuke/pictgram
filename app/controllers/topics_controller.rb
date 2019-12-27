@@ -19,7 +19,17 @@ class TopicsController < ApplicationController
       render :new
     end
   end
-
+  # 編集
+  def edit
+    
+  end
+  # 削除 
+  def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    redirect_to topics_path
+  end
+  
   private
   def topic_params
     params.require(:topic).permit(:image, :description)
