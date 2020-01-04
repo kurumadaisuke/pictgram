@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   resources :topics
   
-  resources :favorites
+  # resources :favorites
   
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'

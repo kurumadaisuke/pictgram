@@ -1,8 +1,8 @@
 class FavoritesController < ApplicationController
   
+  # indexは一覧表示　current_user.favorite_topics＝自分のuserのfavorite_topics
   def index
     @favorite_topics = current_user.favorite_topics
-    @topic = Topic.find_by(topic_id: topic_id)
   end
 
   def create

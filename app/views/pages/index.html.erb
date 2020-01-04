@@ -1,7 +1,29 @@
 <div class="top-hero-wrapper text-center">
   <div class="container top-hero-container">
-    <h1 class="text-white">Make you Happy</h1>
-    <h2 class="text-white">Pictgram is a service that you can post photos.</h2>
+    <h1 class="text-white">給食のサイト</h1>
+<!--検索-->
+    <p>
+    <%= form_tag(topics_path, :method => 'get' ) do %>
+    <span class="text-white">タイトル検索</span>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索', :name => nil %>
+    <% end %>
+    </p>
+<!--検索-->
+    <h2 class="text-white">新着順</h2>
+<!--ここから-->
+    <div calss="topic-index-single">
+    <% @topics.each do |topic| %>
+    <h4 class="text-white">タイトル 「<%=topic.title%>」</h4>
+    <p><%= image_tag topic.image.url %></p>
+    <% end %>
+     </div>
+     <div class="row">
+          <div class="col-md-offset-5 col-md-2">
+          <%= link_to 'もっと見る', topics_path, class: 'btn btn-block btn-white' %>
+          </div> 
+    </div>
+<!--ここまで-->
     <div class="row">
       <div class="col-md-offset-3 col-md-3">
         <%= link_to 'Sign in', new_user_path, class: 'btn btn-block btn-white' %>
