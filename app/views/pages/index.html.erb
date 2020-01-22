@@ -1,13 +1,13 @@
 <div class="top-hero-wrapper text-center">
   <div class="container top-hero-container">
     <h1 class="text-white">料理サイト</h1>
-    <h3 class="text-white">新着順</h3>
+    <h3 class="text-white">新しい投稿</h3>
 <!--ここから-->
 
     <div style="height:350px; overflow-x:auto">
         <div calss="topic-index-single">
         <% @topics.each do |topic| %>
-        <h4 class="text-white">タイトル 「<%=topic.title%>」</h4>
+        <h4 class="text-white">料理名「<%=topic.title%>」</h4>
         <p><%= image_tag topic.image.url %></p>
         <% end %>
          </div>

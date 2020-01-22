@@ -33,14 +33,10 @@
           <% if logged_in? %>
           
             <li>
-              <%= link_to favorites_index_path do %>
-                <%= image_tag "icons/heart.png" %>
-              <% end %>
+              <%= link_to '「お気に入り」' , favorites_index_path %>
             </li>
             <li>
-              <%= link_to new_topic_path do %>
-                <%= image_tag "icons/camera.png" %>
-              <% end %>
+              <%= link_to '「レシピを書く」', new_topic_path %>
             </li>
             <li>
               <%= link_to logout_path, method: :delete do %>
