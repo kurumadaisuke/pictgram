@@ -5,7 +5,7 @@
         <div class="col-md-6 col-md-offset-3">
           <div class="topic-index-single">
             <h2 class="topic-author">
-              user名「<%= topic.user.name %>」
+              投稿者「<%= topic.user.name %>」
              <p>タイトル 「<%=topic.title%>」</p>
              <p>業態 「<%=topic.subject%>」</p>
             </h2>
@@ -25,9 +25,11 @@
               <%= link_to new_comment_path(topic_id: topic.id) do %>
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
               <% end %>
+               <!--詳細-->
+              <%= link_to '[詳細]', topic_path(topic.id), class: 'topic-index-icon' ,method: :get  %>
               
               <!--削除-->
-              <%= link_to '[投稿削除]', topic_path(topic.id), method: :delete %>
+              <%= link_to '[投稿削除]', topic_path(topic.id), class: 'topic-index-icon' ,method: :delete  %>
               
             <p class="topic-text">
               <%= topic.description %>

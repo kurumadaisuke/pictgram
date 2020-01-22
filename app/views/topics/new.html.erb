@@ -27,18 +27,32 @@
           </div>
           
           <!--材料-->
-          <div style="display:inline-flex">
-              <%= f.label :材料名 %>
-              <%= f.text_area :title, size: "20*1"%>
-              <%= f.label :グラム（ｇ）数 %>
-              <%= f.text_area :title, size: "20x1"%>
-          </div>
-          <div style="display:inline-flex">
-              <%= f.label :材料名 %>
-              <%= f.text_area :title, size: "20*1"%>
-              <%= f.label :グラム（ｇ）数 %>
-              <%= f.text_area :title, size: "20x1"%>
-          </div>
+              
+          
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script type="text/javascript">
+              $(document).on("click", ".add", function() {
+                  $(this).parent().clone(true).insertAfter($(this).parent());
+              });
+              $(document).on("click", ".del", function() {
+                  var target = $(this).parent();
+                  if (target.parent().children().length > 1) {
+                      target.remove();
+                  }
+              });
+              </script>
+                <div id="input_pluralBox">
+                   <div id="input_plural">
+                      <div style="display:inline-flex">
+                          <%= f.label :材料名 %>
+                          <%= f.text_area :description, size: "20*1"%>
+                          <%= f.label :グラム（ｇ）数 %>
+                          <%= f.text_area :description, size: "20x1"%>
+                      </div>
+                      <input type="button" value="＋" class="add pluralBtn">
+                      <input type="button" value="－" class="del pluralBtn">
+                  </div>
+                </div>
           <!--材料-->
           <div class="form-group">
             <%= f.label :作り方 %>

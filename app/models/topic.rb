@@ -13,4 +13,13 @@ class Topic < ApplicationRecord
   # コメント実装トピックに関連
   has_many :comments
   has_many :comemnt_users, through: :comments, source: 'user'
+  
+  def self.search(search)
+      if search
+        Topic.where(['title LIKE ?', "%#{search}%"])
+      else
+        Topic.all
+      end
+  end
+    
 end

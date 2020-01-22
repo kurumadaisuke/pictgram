@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pictgram</title>
+    <title>給食のサイト</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,12 +16,21 @@
 
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
       <div class="container">
-        <%= link_to  root_path do %>
-          <span><%= image_tag "icons/logo.png", class: "navbar-brand" %></span>
-        <% end %>
+        
+        <span><%= link_to '[料理投稿サイト]' , root_path ,class: "navbar-brand"%></span>
+        
+        <!--検索機能-->
+        <div class="search">
+            <%= form_tag(search_path, :method => 'get') do %>
+                <span class="text-white">料理名</span>
+                  <%= text_field_tag 'search', nil, placeholder: '例　肉じゃが　カレー' %>
+                  <%= submit_tag '検索',:name => nil %>
+              <% end %>
+        </div>
+        
+        <!--検索機能-->
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
-          
           
             <li>
               <%= link_to favorites_index_path do %>

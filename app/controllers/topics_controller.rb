@@ -19,10 +19,18 @@ class TopicsController < ApplicationController
       render :new
     end
   end
-  # 編集
-  def edit
-    
+  
+  # 詳細
+  def show
+    @topic = Topic.find(params[:id])
   end
+  
+  # 検索機能
+    def search
+    @topics = Topic.search(params[:search])
+    end
+  
+  
   # 削除 
   def destroy
     @topic = Topic.find(params[:id])
