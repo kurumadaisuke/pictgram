@@ -9,9 +9,12 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
 
-  def create
+  def create 
+    
     @topic = current_user.topics.new(topic_params)
-
+    @topic.material = params[:material].join(',')
+    @topic.gram = params[:gram].join(',')
+    
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
@@ -40,6 +43,6 @@ class TopicsController < ApplicationController
   
   private
   def topic_params
-    params.require(:topic).permit(:image, :description, :title,:subject,:material,:gram)
+    params.require(:topic).permit(:image, :description, :title,:subject,material: [],gram: [])
   end
 end

@@ -6,7 +6,8 @@
                 <h2>詳細ページ</h2>
                 <p>投稿者「<%= @topic.user.name %>」</p>
                 <p> 料理名「<%=@topic.title%>」</p>
-                <p>業態 「<%=@topic.subject%>」</p>
+                <p>業態「<%=@topic.subject%>」</p>
+                <p>材料名<span class="material">(<%=@topic.material%>) </span>グラム<span class="material">(<%=@topic.gram%>)g</span> </p>
                 <p><%= image_tag @topic.image.url%></p>
             </div>    
         </div>

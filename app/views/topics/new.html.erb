@@ -45,9 +45,9 @@
                    <div id="input_plural">
                       <div style="display:inline-flex">
                           <%= f.label :材料名 %>
-                          <%= f.text_area :material, size: "20*1"%>
+                          <%= f.text_area :material,name:"material[]" , size: "20*1"%>
                           <%= f.label :グラム（ｇ）数 %>
-                          <%= f.text_area :gram, size: "20x1"%>
+                          <%= f.text_area :gram, name:"gram[]" ,size: "20x1"%>
                       </div>
                       <input type="button" value="＋" class="add pluralBtn">
                       <input type="button" value="－" class="del pluralBtn">

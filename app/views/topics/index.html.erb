@@ -22,6 +22,7 @@
             <% end %>
             <%= topic.favorite_users.count %>
             <!-- コメント実装-->
+            
               <%= link_to new_comment_path(topic_id: topic.id) do %>
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
               <% end %>
@@ -30,10 +31,10 @@
               
               <!--削除-->
               <%= link_to '[投稿削除]', topic_path(topic.id), class: 'topic-index-icon' ,method: :delete  %>
-              
+              <h4>作り方<h4>
             <p class="topic-text">
               <%= topic.description %>
-              <p>コメント</p>
+              <p class="adobaisu">アドバイス一覧</p>
               <% topic.comments.each do |comment| %>
               <p>
               <%= comment.content%>
