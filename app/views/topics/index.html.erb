@@ -27,7 +27,7 @@
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
               <% end %>
                <!--詳細-->
-              <%= link_to '[詳細]', topic_path(topic.id), class: 'topic-index-icon' ,method: :get  %>
+              <%= link_to '[材料一覧]', topic_path(topic.id), class: 'topic-index-icon' ,method: :get  %>
               
               <!--削除-->
               <%= link_to '[投稿削除]', topic_path(topic.id), class: 'topic-index-icon' ,method: :delete  %>
@@ -37,7 +37,7 @@
               <p class="adobaisu">アドバイス一覧</p>
               <% topic.comments.each do |comment| %>
               <p>
-              <%= comment.content%>
+             <li> <%= comment.content%></li>
               </p>
               <% end %>
               </p>

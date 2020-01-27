@@ -6,6 +6,13 @@ class Topic < ApplicationRecord
   
   belongs_to :user
   
+  # 複数入れ子
+  has_many :material
+  has_many :gram
+  
+  accepts_nested_attributes_for :gram
+  accepts_nested_attributes_for :material
+  
   mount_uploader :image, ImageUploader
   
   has_many :favorites

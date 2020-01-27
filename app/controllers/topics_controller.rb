@@ -7,6 +7,8 @@ class TopicsController < ApplicationController
   
   def new
     @topic = Topic.new
+    @topic.material.build
+    @topic.gram.build
   end
 
   def create 
@@ -26,6 +28,8 @@ class TopicsController < ApplicationController
   # 詳細
   def show
     @topic = Topic.find(params[:id])
+    @ary_materi =  @topic.material.split(',')
+    @ary_gram =  @topic.gram.split(',')
   end
   
   # 検索機能
