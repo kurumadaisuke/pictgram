@@ -20,16 +20,14 @@
                           <th scope="col">合計</th>
                         </tr> 
                     　</thead>
+                    　
                       <tbody>
                           <tr>
-                            <% @ary_materi.each do |materia| %>
-                            <td><%= materia %></td>
-                            <% end %>
+                            <%= @material.each do |mateia|%>
+                            <td><%= @material.material %></td>
                             </tr>
                         <tr>
-                            <% @ary_gram.each do |gram| %>
-                            <td><%= gram %></td>
-                            <% end %>
+                            <td><%= @material.gram %></td>
                         </tr>
                       </tbody>
                 </table>

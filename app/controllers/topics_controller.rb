@@ -7,15 +7,12 @@ class TopicsController < ApplicationController
   
   def new
     @topic = Topic.new
-    @topic.material.build
-    @topic.gram.build
+    @topic.materials.build
   end
 
   def create 
     
     @topic = current_user.topics.new(topic_params)
-    @topic.material = params[:material].join(',')
-    @topic.gram = params[:gram].join(',')
     
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
@@ -28,8 +25,7 @@ class TopicsController < ApplicationController
   # 詳細
   def show
     @topic = Topic.find(params[:id])
-    @ary_materi =  @topic.material.split(',')
-    @ary_gram =  @topic.gram.split(',')
+    @material =Material.where(material: params[:material]).where(gram: params[:gram])
   end
   
   # 検索機能
@@ -47,6 +43,6 @@ class TopicsController < ApplicationController
   
   private
   def topic_params
-    params.require(:topic).permit(:image, :description, :title,:subject,material: [],gram: [])
+    params.require(:topic).permit(:image, :description, :title,:subject, materials_attributes: [:material, :gram])
   end
 end
