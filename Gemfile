@@ -69,3 +69,4 @@ gem 'jquery-rails'
 gem 'bcrypt'
 gem "carrierwave"
 gem 'ransack'
+gem 'nested_form_fields'

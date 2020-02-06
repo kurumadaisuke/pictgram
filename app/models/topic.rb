@@ -9,6 +9,8 @@ class Topic < ApplicationRecord
   # 複数入れ子
   has_many :materials
   
+  has_many :material_topics, through: :materials, source: 'topic'
+  
   accepts_nested_attributes_for :materials
   
   mount_uploader :image, ImageUploader

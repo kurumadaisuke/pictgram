@@ -8,27 +8,25 @@
                 <p> 料理名「<%=@topic.title%>」</p>
                 <p>業態「<%=@topic.subject%>」</p>
                 
-                <!--<p>材料名<span class="material">(<%#=@topic.material%>) </span></p>-->
                 
-                <!--<p>グラム<span class="material">(<%#=@topic.gram%>)g</span> </p>-->
                  
                  <table class="table table-bordered">
                       <thead>
                          <tr>
                           <th scope="col">材料名</th>
                           <th scope="col">グラム</th>
-                          <th scope="col">合計</th>
+                          <th scope="col">人数分</th>
                         </tr> 
                     　</thead>
                     　
                       <tbody>
+                        <%= @topic.materials.each do | m |%>
                           <tr>
-                            <%= @material.each do |mateia|%>
-                            <td><%= @material.material %></td>
-                            </tr>
-                        <tr>
-                            <td><%= @material.gram %></td>
-                        </tr>
+                            <td><%= m.material %></td>
+
+                            <td><%= m.gram %></td>
+                          </tr>
+                        <% end %>
                       </tbody>
                 </table>
                     
