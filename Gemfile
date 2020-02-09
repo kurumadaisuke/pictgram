@@ -70,3 +70,5 @@ gem 'bcrypt'
 gem "carrierwave"
 gem 'ransack'
 gem 'nested_form_fields'
+gem "nested_form"
+gem "cocoon"

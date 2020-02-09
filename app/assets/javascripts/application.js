@@ -18,3 +18,5 @@
 //= require_tree .
 //= require jquery
 //= require nested_form_fields
+//= require jquery_nested_form
+//= require cocoon
