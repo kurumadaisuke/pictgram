@@ -4,7 +4,7 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">投稿画面</h1>
         
-        <%= form_for @topic do |f| %>
+        <%= form_with model: @topic, local: true do |f| %>
           <%= f.hidden_field :user_id, value: @topic.user_id %>
           <div class="form-group">
             <%= f.label :料理名 %>
@@ -29,7 +29,7 @@
           
           <!--材料-->
               
-                  ボタン追加
+                  <!--ボタン追加-->
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script type="text/javascript">
                       $(document).on("click", ".add", function() {
@@ -42,17 +42,14 @@
                           }
                       });
                       </script>
-                  ボタン追加
+                  <!--ボタン追加-->
                   
-                  <!--ボタン追加２-->
-                  
-                  <!--ボタン追加２-->
                   
                 <div id="input_pluralBox">
                    <div class="input_plural">
                       <div style="display:inline-flex">
                         
-                        <%= f.nested_fields_for :materials do |m| %>
+                        <%= f.fields_for :materials do |m| %>
                           <!--= m.text_fild :user_id value: @topic.user_id %>-->
                           <!--= m.text_fild :topic_id value: @topic.user_id %>-->
                           
@@ -62,13 +59,17 @@
                           <%= m.label :グラム（ｇ）数 %>
                           <%= m.text_area :gram ,size: "20x1"%>
                           
+                          <%= render "material_fields", f: m %>
                         <% end %>
-                        
+                        <div class="links">
+                            <%= link_to_add_association "＋", f, :materials  %>
+                        </div>
                           
                       </div>
-                      <input type="button" value="＋" class="add pluralBtn">
-                      <input type="button" value="－" class="del pluralBtn">
-                  </div>
+                      
+                          <input type="button" value="＋" class="add pluralBtn">
+                          <input type="button" value="－" class="del pluralBtn">
+                      </div>
                   
                 </div>
           <!--材料-->
