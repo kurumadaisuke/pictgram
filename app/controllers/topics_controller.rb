@@ -1,8 +1,10 @@
 class TopicsController < ApplicationController
+
   def index
     @topics = Topic.all.includes(:favorite_users)
     # 投稿順入れ替え
     @topics = Topic.all.order(created_at: :desc)
+    @topics = Topic.page(params[:page]).per(3)
   end
   
   def new
@@ -46,6 +48,6 @@ class TopicsController < ApplicationController
   
   private
   def topic_params
-    params.require(:topic).permit(:user_id, :image, :description, :title,:subject, materials_attributes: [:material, :gram, :topic_id])
+    params.require(:topic).permit(:user_id, :image, :description, :title,:subject, materials_attributes: [:material, :gram])
   end
 end

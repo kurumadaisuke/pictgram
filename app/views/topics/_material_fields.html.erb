@@ -1,0 +1,11 @@
+    <div id="input_pluralBox">
+      <div class="input_plural">
+        <div style="display:inline-flex">
+            <%= f.label :材料名 %>
+            <%= f.text_area :material %>
+            <%= f.label :グラム %>
+            <%= f.text_area :gram %>
+            <%= link_to_remove_association "−", f ,class: 'btn btn-default'%>
+        </div>
+      </div>
+    </div>

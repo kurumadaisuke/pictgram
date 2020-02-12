@@ -5,7 +5,9 @@
         <h1 class="text-center">投稿画面</h1>
         
         <%= form_with model: @topic, local: true do |f| %>
+        
           <%= f.hidden_field :user_id, value: @topic.user_id %>
+          
           <div class="form-group">
             <%= f.label :料理名 %>
             <%= f.text_area :title, class: 'form-control' , size: "1x1"%>
@@ -49,26 +51,31 @@
                    <div class="input_plural">
                       <div style="display:inline-flex">
                         
+                        <!--%= f.label :材料名 %>-->
+                        <!--%= f.text_area :material %>-->
+                        
                         <%= f.fields_for :materials do |m| %>
                           <!--= m.text_fild :user_id value: @topic.user_id %>-->
                           <!--= m.text_fild :topic_id value: @topic.user_id %>-->
                           
-                           <%= m.label :材料名 %>
-                          <%= m.text_area :material , size: "20*1"%>
+                          <!--%= m.label :材料名 %>-->
+                          <!--%= m.text_area :material , size: "20*1"%>-->
                           
-                          <%= m.label :グラム（ｇ）数 %>
-                          <%= m.text_area :gram ,size: "20x1"%>
+                          <!--%= m.label :グラム（ｇ）数 %>-->
+                          <!--%= m.text_area :gram ,size: "20x1"%>-->
                           
                           <%= render "material_fields", f: m %>
-                        <% end %>
-                        <div class="links">
-                            <%= link_to_add_association "＋", f, :materials  %>
-                        </div>
                           
+                          <% end %>
+                          
+                          
+                          <%= link_to_add_association "＋", f, :materials ,class: 'btn btn-default' %>
+                            
+                        
                       </div>
                       
-                          <input type="button" value="＋" class="add pluralBtn">
-                          <input type="button" value="－" class="del pluralBtn">
+                          <!--<input type="button" value="＋" class="add pluralBtn">-->
+                          <!--<input type="button" value="－" class="del pluralBtn">-->
                       </div>
                   
                 </div>
