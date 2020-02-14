@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
   def create 
    
     @topic = current_user.topics.new(topic_params)
-    binding.pry 
+    # binding.pry 
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
@@ -28,9 +28,6 @@ class TopicsController < ApplicationController
   # 詳細
   def show
     @topic = Topic.find(params[:id])
-    @material =Material.where(material: params[:material]).where(gram: params[:gram])
-    # @material = Material.all
-    # @material.topic_id = params[:topic_id]
   end
   
   # 検索機能
@@ -44,6 +41,17 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.destroy
     redirect_to topics_path, success: '記事を削除しました'
+  end
+  
+  # 計算
+  def times
+    @topic = Topic.find(params[:topic_id])
+    @times = params[:times].to_f * params.require(:topic).permit(materials_attributes:[:gram])
+    
+    respond_to do |format|
+      format.js
+    end
+    
   end
   
   private

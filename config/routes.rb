@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   get '/search', to: 'topics#search'
-
+  
+  post '/times' , to: 'topics#times'
+  
   resources :users
   
   resources :topics
