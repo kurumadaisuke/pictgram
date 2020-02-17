@@ -16,7 +16,6 @@ class TopicsController < ApplicationController
   def create 
    
     @topic = current_user.topics.new(topic_params)
-    # binding.pry 
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
@@ -38,18 +37,27 @@ class TopicsController < ApplicationController
   
   # 削除 
   def destroy
-    @topic = Topic.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
     @topic.destroy
     redirect_to topics_path, success: '記事を削除しました'
   end
   
   # 計算
-  def times
-    @topic = Topic.find(params[:topic_id])
-    @times = params[:times].to_f * params.require(:topic).permit(materials_attributes:[:gram])
-    
+  def ajax_gram
+    kekka = 0
+    @topic = Topic.find(params[:topic_id]) 
+    # @gram_count = @topic.materials.count
+   
+    @ninnzuu = params[:ninnzuu]
+    @gram = []
+    @topic.materials.each do | m |
+      kekka = @ninnzuu.to_i * m.gram.to_i
+      @gram.push(kekka)
+    end
+    # binding.pry
     respond_to do |format|
       format.js
+      format.html
     end
     
   end

@@ -1,0 +1,19 @@
+<%= form_with(model: @user) %>
+  <%= f.text_field :sample1, id: "sample1" %>
+  <%= f.text_field :sample2, id: "sample2" %>
+
+  <%= f.text_field :result, id: "result" %>
+<%end%>
+
+<script>
+$('#sample2').change(function() {
+  var s = $(#sample1).val();
+  var a = $(#sample2).val();
+  var si = parseInt(s);
+  var sa = parseInt(a);
+
+  var result = si - sa
+
+  $('#result').val(result)
+});
+</script>

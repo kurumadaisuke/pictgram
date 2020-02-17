@@ -11,37 +11,40 @@
                         <p>業態「<%=@topic.subject%>」</p>
                         
                         <!--追加-->
+                    
+                            
                         <h3>人数計算</h3>
-                        <%= form_tag times_path do %>
-                          <%= hidden_field_tag :topic_id, @topic.id %>
-                          <%= text_field_tag 'times', nil, placeholder: '例  ○○人分' %>
-                          <%= submit_tag "計算"  %>
-                        <% end %>
+                            <div id="request_ajax_update" >
+                                <%= form_tag(ajax_gram_topics_path, method: :post, remote: true) { %>
+                                  <%= hidden_field_tag :topic_id, @topic.id %>
+                                  <%= text_field_tag :ninnzuu, nil, placeholder: '例  ○○人分' %>
+                                  <%= submit_tag "計算"  %>
+                                  <% } %>
+                            </div>   
+                            
                         <!--追加-->
-                         
-                         <table class="table table-bordered">
-                              <thead>
-                                 <tr>
-                                  <th scope="col">材料名</th>
-                                  <th scope="col">グラム</th>
-                                  <th scope="col">人数分</th>
-                                </tr> 
-                            　</thead>
-                            　
-                              <tbody>
-                                <% @topic.materials.each do | m |%>
-                                  <tr>
-                                    <td><%= m.material %></td>
-        
-                                    <td><%= m.gram %></td>
+                        <div id="gram_hyouzi">
+                             <table class="table table-bordered">
+                                  <thead>
+                                     <tr>
+                                      <th scope="col">材料名</th>
+                                      <th scope="col">グラム</th>
+                                      <th scope="col">人数分</th>
+                                    </tr> 
+                                　</thead>
+                                　
+                                  <tbody>
+                                        <% @topic.materials.each do | m |%>
+                                          <tr>
+                                            <td><%= m.material %></td>
+                                            <td><%= m.gram %></td>
+                                            <td></td>
+                                          </tr>
+                                        <% end %>
                                     
-                                    <td id="times_wo"><%= @times %></td>
-                                    
-                                  </tr>
-                                <% end %>
-                              </tbody>
-                        </table>
-                        
+                                  </tbody>
+                            </table>
+                        </div>
                             <div class="pages">
                             <p ><%= image_tag @topic.image.url %></p>
                             </div>

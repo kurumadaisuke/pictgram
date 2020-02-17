@@ -10,11 +10,16 @@ Rails.application.routes.draw do
 
   get '/search', to: 'topics#search'
   
-  post '/times' , to: 'topics#times'
+  # post 'topics/update' , to: 'topics#update', as: 'topics_update'
   
   resources :users
   
-  resources :topics
+  resources :topics do
+    collection do
+      post :ajax_gram
+    end
+  end
+  
   # resources :favorites
   
   get 'favorites/index'
