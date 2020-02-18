@@ -20,7 +20,8 @@ module Pictgram
     
     # 日本語追加s
     config.i18n.default_locale = :ja 
+    config.assets.initialize_on_precompile = false
   end
   
-  config.assets.initialize_on_precompile = false
+  
 end
