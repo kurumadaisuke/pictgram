@@ -46,8 +46,6 @@ class TopicsController < ApplicationController
   def ajax_gram
     kekka = 0
     @topic = Topic.find(params[:topic_id]) 
-    # @gram_count = @topic.materials.count
-   
     @ninnzuu = params[:ninnzuu]
     @gram = []
     @topic.materials.each do | m |
