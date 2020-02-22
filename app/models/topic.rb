@@ -7,7 +7,7 @@ class Topic < ApplicationRecord
   belongs_to :user
   
   # 複数入れ子
-  has_many :materials
+  has_many :materials,dependent: :destroy
   
   has_many :material_topics, through: :materials, source: 'topic'
   
@@ -15,10 +15,10 @@ class Topic < ApplicationRecord
   
   mount_uploader :image, ImageUploader
   
-  has_many :favorites
+  has_many :favorites,dependent: :destroy
   has_many :favorite_users, through: :favorites, source: 'user'
   # コメント実装トピックに関連
-  has_many :comments
+  has_many :comments,dependent: :destroy
   has_many :comemnt_users, through: :comments, source: 'user'
   
   def self.search(search)

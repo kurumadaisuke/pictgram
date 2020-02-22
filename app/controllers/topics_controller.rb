@@ -19,7 +19,6 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
-      bindig.pry
       flash.now[:danger] = "投稿に失敗しました"
       render :new
     end
@@ -38,7 +37,8 @@ class TopicsController < ApplicationController
   
   # 削除 
   def destroy
-    @topic = Topic.find(params[:topic_id])
+    # binding.pry
+    @topic = Topic.find(params[:id])
     @topic.destroy
     redirect_to topics_path, success: '記事を削除しました'
   end

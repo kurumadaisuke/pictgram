@@ -33,7 +33,7 @@
               <%= link_to '[材料情報]', topic_path(topic.id), class: 'topic-index-icon' ,method: :get  %>
               
               <!--削除-->
-              <%= link_to '[投稿削除]', topic_path(topic.id), class: 'topic-index-icon' ,method: :delete  %>
+              <%= link_to '[投稿削除]', topic_path(topic.id), topic_id: topic.id ,class: 'topic-index-icon' ,method: :delete%>
               <h4>作り方<h4>
             <p class="topic-text">
               <%= topic.description %>
